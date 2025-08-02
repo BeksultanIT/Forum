@@ -1,0 +1,157 @@
+
+[
+{
+  "model": "webapp.comment",
+  "pk": 1,
+  "fields": {
+    "created_at": "2025-08-02T09:56:52.453Z",
+    "updated_at": "2025-08-02T09:56:52.453Z",
+    "forum": 6,
+    "text": "суппер",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 2,
+  "fields": {
+    "created_at": "2025-08-02T09:58:59.487Z",
+    "updated_at": "2025-08-02T09:58:59.487Z",
+    "forum": 6,
+    "text": "класс",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 3,
+  "fields": {
+    "created_at": "2025-08-02T10:18:20.235Z",
+    "updated_at": "2025-08-02T10:18:20.235Z",
+    "forum": 5,
+    "text": "testing",
+    "author": 2
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 4,
+  "fields": {
+    "created_at": "2025-08-02T10:24:55.708Z",
+    "updated_at": "2025-08-02T10:24:55.708Z",
+    "forum": 5,
+    "text": "eeeeeeee",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 5,
+  "fields": {
+    "created_at": "2025-08-02T10:38:32.604Z",
+    "updated_at": "2025-08-02T10:38:32.604Z",
+    "forum": 7,
+    "text": "rjvvvydasd",
+    "author": 2
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 6,
+  "fields": {
+    "created_at": "2025-08-02T11:59:43.820Z",
+    "updated_at": "2025-08-02T11:59:43.820Z",
+    "forum": 5,
+    "text": "asdfasdf",
+    "author": 5
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 1,
+  "fields": {
+    "created_at": "2025-08-02T07:06:09.030Z",
+    "updated_at": "2025-08-02T07:06:09.031Z",
+    "title": "Строительство дома самостоятельно",
+    "description": "Новые дома своими руками",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 3,
+  "fields": {
+    "created_at": "2025-08-02T07:34:35.616Z",
+    "updated_at": "2025-08-02T07:34:35.616Z",
+    "title": "test",
+    "description": "test",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 4,
+  "fields": {
+    "created_at": "2025-08-02T07:34:42.462Z",
+    "updated_at": "2025-08-02T07:34:42.462Z",
+    "title": "test1",
+    "description": "test1",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 5,
+  "fields": {
+    "created_at": "2025-08-02T07:34:49.262Z",
+    "updated_at": "2025-08-02T07:34:49.262Z",
+    "title": "test2",
+    "description": "test2",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 6,
+  "fields": {
+    "created_at": "2025-08-02T07:34:57.380Z",
+    "updated_at": "2025-08-02T07:34:57.380Z",
+    "title": "test3",
+    "description": "test3",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 7,
+  "fields": {
+    "created_at": "2025-08-02T10:38:18.799Z",
+    "updated_at": "2025-08-02T10:38:18.800Z",
+    "title": "test user1",
+    "description": "testttttt",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 8,
+  "fields": {
+    "created_at": "2025-08-02T11:53:12.822Z",
+    "updated_at": "2025-08-02T11:53:12.822Z",
+    "title": "фывафывавы",
+    "description": "выаывфсвф",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.forum",
+  "pk": 9,
+  "fields": {
+    "created_at": "2025-08-02T11:57:47.461Z",
+    "updated_at": "2025-08-02T11:57:47.461Z",
+    "title": "safasdf",
+    "description": "asdfasdf",
+    "author": 5
+  }
+}
+]
