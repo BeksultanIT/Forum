@@ -22,17 +22,17 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-{#        <div class="collapse navbar-collapse" id="navbarNav">#}
-{#            <ul class="navbar-nav">#}
-{#                {% block nav %}#}
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% block nav %}
 {#                    {% if user.is_authenticated %}#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link active" aria-current="page" href="{% url 'webapp:add-article' %}">Create#}
-{#                                form</a>#}
-{#                        </li>#}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'webapp:add-forum' %}">Create
+                                form</a>
+                        </li>
 {#                    {% endif %}#}
-{#                {% endblock %}#}
-{##}
+                {% endblock %}
+
 {#                {% if user.is_authenticated %}#}
 {#                    <li class="nav-item">#}
 {#                        <form action="{% url 'accounts:logout' %}?next={{ request.get_full_path }}" method="post">#}
@@ -52,8 +52,8 @@
 {#                        <a class="nav-link active" aria-current="page" href="{% url 'accounts:registration' %}?next={{ request.get_full_path }}">Registration</a>#}
 {#                    </li>#}
 {#                {% endif %}#}
-{#            </ul>#}
-{#        </div>#}
+            </ul>
+        </div>
     </div>
 </nav>
 
