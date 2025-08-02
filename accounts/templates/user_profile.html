@@ -26,5 +26,7 @@
             <p class="card-text">Birthday - {{ user_obj.profile.birth_date|default:"не указан" }}</p>
         </div>
     </div>
+    <p> Количество комментариев - {{ user.comments.count }}</p>
+
     {% include "partial/forums_list.html" %}
 {% endblock %}

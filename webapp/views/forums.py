@@ -49,6 +49,10 @@ class CreateForumView(LoginRequiredMixin, CreateView):
     template_name = 'forums/create_forum.html'
     form_class = ForumForm
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 class UpdateForumView(LoginRequiredMixin, UpdateView):
     template_name = "forums/update_forum.html"
     form_class = ForumForm

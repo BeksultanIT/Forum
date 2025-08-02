@@ -8,7 +8,7 @@ from webapp.models import BaseCreateUpdateModel
 class Forum(BaseCreateUpdateModel):
     title = models.CharField(max_length=50,  verbose_name='Название', null=False, blank=False)
     description = models.TextField(verbose_name='Содержимое', null=False, blank=False)
-    author = models.ForeignKey(get_user_model(), related_name='forum', on_delete=models.SET_DEFAULT, default=1, verbose_name="Автор")
+    author = models.ForeignKey(get_user_model(), related_name='forums', on_delete=models.SET_DEFAULT, default=1, verbose_name="Автор")
 
 
     class Meta:
