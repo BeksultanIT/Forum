@@ -1,28 +1,32 @@
 <div class="row mt-3">
-    {% for forum in forums %}
-        <div class="col-12 col-md-4 col-lg-3 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ forum.title }}</h5>
-{#                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ article.author }}</h6>#}
-                    <p class="card-text">{{ forum.description }}</p>
-{#                    <a href="{% url 'webapp:article-detail' article.pk %}"#}
-{#                       class="card-link btn btn-primary">Detail</a>#}
-{##}
-{#                    {% if perms.webapp.change_article or user == article.author %}#}
-{#                        <a href="{% url 'webapp:article-update' article.pk %}"#}
-{#                           class="card-link btn btn-primary">Update</a>#}
-{#                    {% endif %}#}
-{#                    {% if perms.webapp.delete_article or user == article.author %}#}
-{#                        <a href="{% url 'webapp:article-delete' article.pk %}"#}
-{#                           class="card-link btn btn-primary">Delete</a>#}
-{#                    {% endif %}#}
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <p>No Forums</p>
-    {% endfor %}
+    <div class="col-12">
+        {% if forums %}
+            <ul class="list-group">
+                {% for forum in forums %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1">{{ forum.title }}</h5>
+                            <p class="mb-1">{{ forum.description }}</p>
+                        </div>
+                        <div class="btn-group btn-group-sm ms-3" role="group" aria-label="actions">
+                            {% if perms.webapp.change_forum or user == forum.author %}
+                                <a href="{% url 'webapp:update-forum' forum.pk %}" class="btn btn-outline-primary">
+                                    Update
+                                </a>
+                            {% endif %}
+                            {% if perms.webapp.delete_forum or user == forum.author %}
+                                <a href="{% url 'webapp:delete-forum' forum.pk %}" class="btn btn-outline-danger">
+                                    Delete
+                                </a>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No Forums</p>
+        {% endif %}
+    </div>
 </div>
 
 {% if is_paginated %}

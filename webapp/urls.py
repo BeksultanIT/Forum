@@ -1,12 +1,13 @@
 from django.urls import path
 
-from webapp.views import ForumListView, CreateForumView
+from webapp.views import ForumListView, CreateForumView, UpdateForumView, DeleteForumView
 
 app_name = 'webapp'
 
 #webapp:index
 urlpatterns = [
     path('', ForumListView.as_view(), name='index'),
-path('add-forum/', CreateForumView.as_view(), name='add-forum'),
-
+    path('add-forum/', CreateForumView.as_view(), name='add-forum'),
+    path('forum/<int:pk>/update/', UpdateForumView.as_view(), name='update-forum'),
+    path('forum/<int:pk>/delete/', DeleteForumView.as_view(), name='delete-forum'),
 ]

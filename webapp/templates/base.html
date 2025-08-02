@@ -31,6 +31,9 @@
                                 form</a>
                         </li>
 {#                    {% endif %}#}
+                    <div class="text-center">
+                        {% include "partial/simple_search.html" with form=search_form %}
+                    </div>
                 {% endblock %}
 
 {#                {% if user.is_authenticated %}#}
