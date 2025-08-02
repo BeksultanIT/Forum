@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>{{ forum.title }}</title>
+{% endblock %}
+
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'webapp:add-forum' %}">Create article</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'webapp:update-forum' forum.pk %}">Update
+            article</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'webapp:delete-forum' forum.pk %}">Delete
+            article</a>
+    </li>
+
+{% endblock %}
+
+{% block content %}
+  <div class="container my-4">
+    <div class="border rounded p-3 mb-4 shadow-sm">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start">
+        <div>
+          <h1 class="h4 mb-1">{{ forum.title }}</h1>
+          <div class="text-muted small">
+            <span class="me-2">{{ forum.created_at|date:"d.m.Y H:i" }}</span>
+            <span>• Автор:
+              <a href="/">
+                {{ forum.author.username }}
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="mt-2 mt-md-0">
+          {% if perms.webapp.change_forum or user == forum.author %}
+            <a href="{% url 'webapp:update-forum' forum.pk %}" class="btn btn-sm btn-outline-primary me-1">Редактировать</a>
+          {% endif %}
+          {% if perms.webapp.delete_forum or user == forum.author %}
+            <a href="{% url 'webapp:delete-forum' forum.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="mb-0">{{ forum.description }}</p>
+      </div>
+    </div>
+
+
+    {% if user.is_authenticated %}
+      <div class="mb-3">
+        <a href="{% url 'webapp:add-comment' forum.pk %}" class="btn btn-primary btn-sm">Создать комментарий</a>
+      </div>
+    {% endif %}
+
+
+    <div class="list-group">
+      <h5 class="mb-3">Комментарии ({{ forum.comments.count }})</h5>
+      {% for comment in forum.comments.all %}
+        <div class="list-group-item mb-2 shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="d-flex align-items-center mb-1">
+                {% if comment.author.profile.avatar.url %}
+                  <img src="{{ comment.author.profile.avatar.url }}" alt="avatar" class="rounded-circle me-2" width="40" height="40">
+                {% endif %}
+                <div>
+                  <a href="/" class="fw-semibold">{{ comment.author.username }}</a>
+                  <div class="text-muted small">
+                    {{ comment.created_at|date:"d.m.Y H:i" }} · Сообщений: {{ comment.author.comments.count }}
+                  </div>
+                </div>
+              </div>
+              <p class="mb-1">{{ comment.text }}</p>
+            </div>
+            <div class="text-end">
+              {% if perms.webapp.change_comment or user == comment.author %}
+                <a href="{% url 'webapp:comment-update' comment.pk %}" class="btn btn-sm btn-outline-secondary me-1">Изм.</a>
+              {% endif %}
+              {% if perms.webapp.delete_comment or user == comment.author %}
+                <a href="{% url 'webapp:comment-delete' comment.pk %}" class="btn btn-sm btn-outline-danger">Удал.</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-muted">Пока нет комментариев.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

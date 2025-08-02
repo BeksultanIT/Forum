@@ -1,34 +1,48 @@
 <div class="row mt-3">
-    <div class="col-12">
-        {% if forums %}
-            <ul class="list-group">
-                {% for forum in forums %}
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="flex-grow-1">
-                            <h5 class="mb-1">{{ forum.title }}</h5>
-                            <p class="mb-1">{{ forum.description }}</p>
-                        </div>
-                        <div class="btn-group btn-group-sm ms-3" role="group" aria-label="actions">
-                            {% if perms.webapp.change_forum or user == forum.author %}
-                                <a href="{% url 'webapp:update-forum' forum.pk %}" class="btn btn-outline-primary">
-                                    Update
-                                </a>
-                            {% endif %}
-                            {% if perms.webapp.delete_forum or user == forum.author %}
-                                <a href="{% url 'webapp:delete-forum' forum.pk %}" class="btn btn-outline-danger">
-                                    Delete
-                                </a>
-                            {% endif %}
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No Forums</p>
-        {% endif %}
-    </div>
+  <div class="col-12">
+    {% if forums %}
+      <ul class="list-group">
+        {% for forum in forums %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="flex-grow-1">
+              <a href="{% url 'webapp:detail-forum' forum.pk %}" class="text-decoration-none text-reset d-flex gap-3 align-items-center">
+                <div class="fw-semibold" style="min-width: 150px;">
+                  {{ forum.title }}
+                </div>
+                <div class="text-muted small" style="min-width: 120px;">
+                  {{ forum.created_at|date:"d.m.Y H:i" }}
+                </div>
+                <div class="text-secondary small" style="min-width: 120px;">
+                  {{ forum.author.username }}
+                </div>
+                  <div class="text-secondary small" style="min-width: 120px;">
+                  · Сообщений: {{ comment.author.comments.count }}
+                </div>
+
+              </a>
+            </div>
+
+            <div class="btn-group btn-group-sm ms-3" role="group" aria-label="actions">
+              {% if perms.webapp.change_forum or user == forum.author %}
+                <a href="{% url 'webapp:update-forum' forum.pk %}" class="btn btn-outline-primary">
+                  Update
+                </a>
+              {% endif %}
+              {% if perms.webapp.delete_forum or user == forum.author %}
+                <a href="{% url 'webapp:delete-forum' forum.pk %}" class="btn btn-outline-danger">
+                  Delete
+                </a>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No Forums</p>
+    {% endif %}
+  </div>
 </div>
 
 {% if is_paginated %}
-    {% include "partial/pagination.html" %}
+  {% include "partial/pagination.html" %}
 {% endif %}

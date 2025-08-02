@@ -1,0 +1,1 @@
+from webapp.views.forums import ForumListView, CreateForumView, UpdateForumView, DeleteForumView, DetailForumView

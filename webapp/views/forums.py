@@ -1,10 +1,11 @@
-from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.http import urlencode
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from webapp.forms import ForumForm
 from webapp.forms.search import SearchForm
+
 from webapp.models.forums import Forum
 
 
@@ -13,7 +14,8 @@ class ForumListView(ListView):
     model = Forum
     context_object_name = 'forums'
     ordering = ['-created_at']
-    paginate_by = 3
+    paginate_by = 7
+
 
     def dispatch(self, request, *args, **kwargs):
         print(request.user)
@@ -43,16 +45,20 @@ class ForumListView(ListView):
             return self.form.cleaned_data['search']
 
 
-class CreateForumView(CreateView):
+class CreateForumView(LoginRequiredMixin, CreateView):
     template_name = 'forums/create_forum.html'
     form_class = ForumForm
 
-class UpdateForumView(UpdateView):
+class UpdateForumView(LoginRequiredMixin, UpdateView):
     template_name = "forums/update_forum.html"
     form_class = ForumForm
     model = Forum
 
-class DeleteForumView(DeleteView):
+class DeleteForumView(LoginRequiredMixin, DeleteView):
     model = Forum
     template_name = 'forums/delete_forum.html'
     success_url = reverse_lazy('webapp:index')
+
+class DetailForumView(DetailView):
+    template_name = 'forums/detail_forum.html'
+    model = Forum
